@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+class HeaderInfo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final String location = ('VIU');
+    final String weather = ('Clear, Warm');
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding: EdgeInsets.all(8),
+              child: Text(
+                'Location - $location',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                DateFormat('MMM dd, yyyy').format(DateTime.now()),
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            Container(
+              padding: EdgeInsets.all(8),
+              child: Text(
+                'Weather - $weather',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            )
+          ],
+        )
+      ],
+    );
+  }
+}
