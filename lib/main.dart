@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import './widgets/header_info.dart';
-import 'package:intl/intl.dart';
+import './widgets/user_log_entry.dart';
 
-import './modles/report_information.dart';
+import './widgets/header_info.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,23 +16,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<ReportInformation> report = [
-    ReportInformation(
-      id: DateTime.now().toString(),
-      entry: 'Test Text',
-      date: DateTime.now(),
-      //location: 'VIU'
-    ),
-    ReportInformation(
-      id: DateTime.now().toString(),
-      entry: 'Second entry',
-      date: DateTime.now(),
-      //location: 'VIU'
-    ),
-  ];
-
   final locationControler = TextEditingController();
-  final entryControlerer = TextEditingController();
   final weatherControler = TextEditingController();
 
   @override
@@ -47,83 +30,38 @@ class MyHomePage extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
+          //headerInfo ia daily information location, date, weather.
+          //required at the top of each report.
           HeaderInfo(),
           SizedBox(
             height: 10,
           ),
-          Container(
-            padding: EdgeInsets.all(10),
-            // width: 250,
-            //  child: Card(
-            //color: Colors.blue,
-            // elevation: 5,
-            child: TextField(
-              decoration: InputDecoration(labelText: 'Location'),
-              controller: locationControler,
-            ),
-            // ),
-          ),
-          Container(
-            padding: EdgeInsets.all(10),
-            // width: 250,
-            //  child: Card(
-            //color: Colors.blue,
-            // elevation: 5,
-            child: TextField(
-              decoration: InputDecoration(labelText: 'Weather'),
-              controller: weatherControler,
-            ),
-            // ),
-          ),
-          Container(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                TextField(
-                  decoration: InputDecoration(labelText: 'Entry text'),
-                  controller: entryControlerer,
-                ),
-                FlatButton(
-                  child: Text('Add entry'),
-                  textColor: Colors.purple,
-                  onPressed: () {
-                    // print(titleController.text);
-                  },
-                ),
-              ],
-            ),
-          ),
-          Column(
-            children: report.map((dr) {
-              return Container(
-                child: Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                        vertical: 2,
-                        horizontal: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1,
-                        ),
-                      ),
-                      padding: EdgeInsets.all(4),
-                      child: Text(
-                        DateFormat.Hm().format(dr.date),
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                    Text(dr.entry)
-                  ],
-                ),
-              );
-            }).toList(),
-          )
+          //three containers locking for user text input for
+          //location, date, log entry.
+          // Container(
+          //   padding: EdgeInsets.all(10),
+          //   child:
+          //       //requesting the user to input location.
+          //       // it's tempuary hard coded in
+          //       //eventualy have it outomatic input option
+          //       TextField(
+          //     decoration: InputDecoration(labelText: 'Location'),
+          //     controller: locationControler,
+          //   ),
+          // ),
+          // Container(
+          //   padding: EdgeInsets.all(10),
+          //   child:
+          //       //requesting the user to input weather.
+          //       // it's tempuary hard coded in
+          //       //eventualy have it outomatic input option
+          //       TextField(
+          //     decoration: InputDecoration(labelText: 'Weather'),
+          //     controller: weatherControler,
+          //   ),
+          // ),
+          UserLogEntry(),
+          //will be used to add a new log entry with current time.
         ],
       ),
     );

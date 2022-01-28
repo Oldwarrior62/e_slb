@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class ReportInformation {
   final String id;
-  final String entry;
+  final String logEntry;
   final DateTime date;
   // final String location;
   // final String firstName;
@@ -10,7 +10,7 @@ class ReportInformation {
 
   ReportInformation({
     @required this.id,
-    @required this.entry,
+    @required this.logEntry,
     @required this.date,
     // @required this.location,
   });
