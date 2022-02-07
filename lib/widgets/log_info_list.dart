@@ -10,40 +10,70 @@ class LogInfoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: logEntry.map((dr) {
-        return Container(
-          child: Row(
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(
-                  vertical: 2,
-                  horizontal: 5,
+    return Container(
+      height: 550,
+      child: logEntry.isEmpty
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset('lib/images/logo.png'),
+                Text(
+                  'No log entered.',
+                  style: Theme.of(context).textTheme.headline6,
                 ),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
+              ],
+            )
+          : ListView.builder(
+              itemBuilder: (ctx, index) {
+                return Container(
+                  margin: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(width: 1.5, color: Colors.black),
+                    ),
                   ),
-                ),
-                padding: EdgeInsets.all(4),
-                child:
-                    //display for current time log entry is submitted
-                    //this is automatically done in 24 hour clock
-                    Text(
-                  DateFormat.Hm().format(dr.date),
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
+                  padding: EdgeInsets.symmetric(vertical: 3, horizontal: 3),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          vertical: 2,
+                          horizontal: 5,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
+                          ),
+                        ),
+                        padding: EdgeInsets.all(1.5),
+                        child:
+                            //display for current time log entry is submitted
+                            //this is automatically done in 24 hour clock
+                            Text(
+                          DateFormat.Hm().format(logEntry[index].date),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      //text submited by user in the log entry field
+                      //curently hard coded in
+                      Container(
+                        width: 285,
+                        child: Text(
+                          logEntry[index].logEntry,
+                          style: TextStyle(fontSize: 15),
+                          maxLines: 10,
+                        ),
+                      )
+                    ],
                   ),
-                ),
-              ),
-              //text submited by user in the log entry field
-              //curently hard coded in
-              Text(dr.logEntry)
-            ],
-          ),
-        );
-      }).toList(),
+                );
+              },
+              itemCount: logEntry.length,
+            ),
     );
   }
 }
