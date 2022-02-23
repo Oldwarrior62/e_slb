@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import './widgets/log_info_list.dart';
@@ -60,6 +62,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  void stikeOutLogEntry(String id) {
+    setState(() {
+      _report.removeWhere(
+        (log) => log.id == id,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,6 +91,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
             //headerInfo ia daily information location, date, weather.
             //required at the top of each report.
+            Image.asset(
+              'lib/images/logo.png',
+              width: 150,
+            ),
+            SizedBox(
+              height: 10,
+            ),
             HeaderInfo(),
             Divider(
               height: 3,
@@ -92,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // ),
 
             //used to add a new log entry with current time.
-            LogInfoList(_report),
+            LogInfoList(_report, stikeOutLogEntry),
             SizedBox(
               height: 4,
             ),

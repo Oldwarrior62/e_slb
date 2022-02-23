@@ -5,8 +5,9 @@ import '../modles/report_information.dart';
 
 class LogInfoList extends StatelessWidget {
   final List<ReportInformation> logEntry;
+  final Function strikeOutLog;
 
-  LogInfoList(this.logEntry);
+  LogInfoList(this.logEntry, this.strikeOutLog);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,10 @@ class LogInfoList extends StatelessWidget {
           ? Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Image.asset('lib/images/logo.png'),
+                Image.asset(
+                  'lib/images/logo.png',
+                  width: 325,
+                ),
                 Text(
                   'No log entered.',
                   style: Theme.of(context).textTheme.headline6,
@@ -61,13 +65,20 @@ class LogInfoList extends StatelessWidget {
                       //text submited by user in the log entry field
                       //curently hard coded in
                       Container(
-                        width: 285,
+                        width: 225,
                         child: Text(
                           logEntry[index].logEntry,
                           style: TextStyle(fontSize: 15),
                           maxLines: 10,
                         ),
-                      )
+                      ),
+                      IconButton(
+                        onPressed: () => strikeOutLog(logEntry[index].id),
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                      ),
                     ],
                   ),
                 );
