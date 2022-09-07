@@ -1,126 +1,62 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
-import './widgets/log_info_list.dart';
-import './widgets/new_log_entry.dart';
-import './widgets/header_info.dart';
+import './widgets/personal_info.dart';
+import './widgets/Email_item.dart';
+import './widgets/log_in.dart';
+import './widgets/main_log_entry.dart';
+import './widgets/new_user.dart';
+import 'screens/tabsScreen.dart';
+import './screens/user.dart';
 
-import './modles/report_information.dart';
+//import 'widgets/main_log_entry.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown,
+  // ]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'E-SLB',
-      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final List<ReportInformation> _report = [
-    // ReportInformation(
-    //   id: DateTime.now().toString(),
-    //   logEntry: 'Test Text',
-    //   date: DateTime.now(),
-    //   //location: 'VIU'
-    // ),
-    // ReportInformation(
-    //   id: DateTime.now().toString(),
-    //   logEntry: 'Second entry',
-    //   date: DateTime.now(),
-    //   //location: 'VIU'
-    // ),
-  ];
-
-  void _newLogEntry(String newLogEntry) {
-    final newLogIn = ReportInformation(
-      id: DateTime.now().toString(),
-      logEntry: newLogEntry,
-      date: DateTime.now(),
-    );
-    setState(() {
-      _report.add(newLogIn);
-    });
-  }
-
-  void _startNewLogEntry(BuildContext ctx) {
-    showModalBottomSheet(
-      context: ctx,
-      builder: (_) {
-        return NewLogEntry(_newLogEntry);
+      title: 'E-SLB',
+      theme: ThemeData(
+          // fontFamily: 'Quicksand',
+          // textTheme: ThemeData.light().textTheme.copyWith(
+          //       subtitle1: TextStyle(
+          //         fontFamily: 'OpenSans',
+          //         fontWeight: FontWeight.bold,
+          //         fontSize: 18,
+          //       ),
+          //       button: TextStyle(color: Colors.white),
+          //     ),
+          // appBarTheme: AppBarTheme(
+          //   // ignore: deprecated_member_use
+          //   textTheme: ThemeData.light().textTheme.copyWith(
+          //         subtitle2: TextStyle(
+          //           fontFamily: 'OpenSans',
+          //           fontSize: 20,
+          //           fontWeight: FontWeight.bold,
+          //         ),
+          //       ),
+          // ),
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+              .copyWith(secondary: Colors.amber)),
+      // home: LogIn(),
+      routes: {
+        '/': (ctx) => LogIn(),
+        '/log_in': (ctx) => LogIn(),
+        NewUser.routeName: (ctx) => NewUser(),
+        MainLogEntry.routeName: (ctx) => MainLogEntry(),
+        TabsScreen.routeName: (ctx) => TabsScreen(),
+        Email.routeName: (ctx) => Email(),
+        PersonalInfo.routeName: (ctx) => PersonalInfo(),
+        User.routeName: (ctx) => User(),
       },
-    );
-  }
-
-  void stikeOutLogEntry(String id) {
-    setState(() {
-      _report.removeWhere(
-        (log) => log.id == id,
-      );
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Security Log Book'),
-        actions: [
-          IconButton(
-            onPressed: () => _startNewLogEntry(context),
-            icon: Icon(Icons.add),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 15,
-            ),
-
-            //headerInfo ia daily information location, date, weather.
-            //required at the top of each report.
-            Image.asset(
-              'lib/images/logo.png',
-              width: 150,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            HeaderInfo(),
-            Divider(
-              height: 3,
-              thickness: 2,
-              color: Colors.black,
-            ),
-            // SizedBox(
-            //   height: 10,
-            // ),
-
-            //used to add a new log entry with current time.
-            LogInfoList(_report, stikeOutLogEntry),
-            SizedBox(
-              height: 4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => _startNewLogEntry(context),
-      ),
     );
   }
 }

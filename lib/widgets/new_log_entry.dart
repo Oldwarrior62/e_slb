@@ -17,32 +17,37 @@ class _NewLogEntryState extends State<NewLogEntry> {
 
     if (enteredLog.isEmpty) {
       return;
-    }
-
-    widget.addNewLogIn(entryController.text);
+    } else
+      widget.addNewLogIn(entryController.text);
     Navigator.of(context).pop();
     entryController.clear();
   }
 
   @override
   Widget build(BuildContext context) {
+    // final mediaQuery = MediaQuery.of(context);
     return Column(
       children: [
-        Container(
-          padding: EdgeInsets.all(10),
-          width: 350,
-          child:
-              //requesting the user to input log entry.
-              TextField(
-            decoration: InputDecoration(labelText: 'Enter log'),
-            controller: entryController,
+        SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+            ),
+            child:
+                //requesting the user to input log entry.
+                TextField(
+              decoration: const InputDecoration(labelText: 'Enter log'),
+              controller: entryController,
+            ),
           ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            FlatButton(
-              child: Text('Add log'),
+            TextButton(
+              child: const Text('Add log'),
 
               // textColor: Colors.purple,
               onPressed: submitData,

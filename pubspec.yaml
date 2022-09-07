@@ -24,10 +24,14 @@ dependencies:
   flutter:
     sdk: flutter
   intl: ^0.17.0
-
+  
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  provider: ^6.0.3
+  datetime_picker_formfield: ^2.0.1
+  shared_preferences: ^2.0.15
+ # geolocator: ^8.0.5
 
 dev_dependencies:
   flutter_test:
@@ -60,12 +64,23 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: OpenSans
-  #     fonts:
-  #       - asset: assets/fonts/OpenSans-Regular.ttf
-  #       - asset: assets/fonts/OpenSans-Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: OpenDyslexic
+      fonts:
+        - asset: lib/fonts/OpenDyslexic-Regular.otf
+        - asset: lib/fonts/OpenDyslexic-Italic.otf
+        - asset: lib/fonts/OpenDyslexic-Bold.otf
+          weight: 700
+    - family: OpenSans
+      fonts:
+        - asset: lib/fonts/OpenSans-Regular.ttf
+        - asset: lib/fonts/OpenSans-Bold.ttf
+          weight: 700
+    - family: Quicksand
+      fonts:
+        - asset: lib/fonts/Quicksand-Regular.ttf
+        - asset: lib/fonts/Quicksand-Bold.ttf
+          weight: 700
   #   - family: OpenSans
   #     fonts:
   #       - asset: assets/fonts/QuickSand-Regular.ttf
