@@ -104,7 +104,7 @@ class LogEntryItem extends StatelessWidget {
           mediaQuery.size.width > 360
               ? TextButton.icon(
                   style: TextButton.styleFrom(
-                    primary: Colors.red,
+                    foregroundColor: Colors.red,
                     side: BorderSide(color: Colors.red, width: 5),
                   ),
                   onPressed: () => strikeOutLog(logEntry.id),
