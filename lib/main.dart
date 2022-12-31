@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/details_page.dart';
+import './widgets/date_selected.dart';
+import './widgets/location_selected.dart';
+import './widgets/company_selected.dart';
 import './widgets/personal_info.dart';
 import './widgets/Email_item.dart';
 import './widgets/log_in.dart';
 import './widgets/main_log_entry.dart';
 import './widgets/new_user.dart';
-import 'screens/tabsScreen.dart';
-import './screens/user.dart';
+import 'widgets/user_form.dart';
 
 //import 'widgets/main_log_entry.dart';
 
@@ -52,10 +55,15 @@ class MyApp extends StatelessWidget {
         '/log_in': (ctx) => LogIn(),
         NewUser.routeName: (ctx) => NewUser(),
         MainLogEntry.routeName: (ctx) => MainLogEntry(),
-        TabsScreen.routeName: (ctx) => TabsScreen(),
         Email.routeName: (ctx) => Email(),
         PersonalInfo.routeName: (ctx) => PersonalInfo(),
-        User.routeName: (ctx) => User(),
+        UserForm.routeName: (ctx) => UserForm(),
+        CompanySelected.routName: (ctx) => CompanySelected(),
+        LocationSelected.routeName: (ctx) => LocationSelected(),
+        DateSelected.routeName: (ctx) => DateSelected(),
+        DetailsPage.routeName: (ctx) => DetailsPage(
+              dailyReportId: null,
+            ),
       },
     );
   }

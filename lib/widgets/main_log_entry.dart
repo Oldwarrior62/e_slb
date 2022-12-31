@@ -7,8 +7,7 @@ import 'package:intl/intl.dart';
 import 'log_info_list.dart';
 import 'new_log_entry.dart';
 import 'header_info.dart';
-
-import '../modles/report_information.dart';
+import '../models/report_model.dart';
 
 class MainLogEntry extends StatefulWidget {
   static const routeName = '/main_log_entry';
@@ -26,9 +25,9 @@ class _MainLogEntryState extends State<MainLogEntry> {
 
   void _newLogEntry(String newLogEntry) {
     final newLogIn = ReportInformation(
-      id: DateTime.now().toString(),
+      reportInformationId: DateTime.now().toString(),
       logEntry: newLogEntry,
-      date: DateTime.now(),
+      createdTime: DateTime.now(),
     );
     setState(() {
       _report.add(newLogIn);
@@ -47,7 +46,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
   void stikeOutLogEntry(String id) {
     setState(() {
       _report.removeWhere(
-        (log) => log.id == id,
+        (log) => log.reportInformationId == id,
       );
     });
   }

@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../screens/tabsScreen.dart';
-//import '../widgets/new_user.dart';
-import '../screens/user.dart';
-
-//import '../widgets/main_log_entry.dart';
-//import '../widgets/new_user.dart';
+import '../widgets/main_log_entry.dart';
+import 'user_form.dart';
 
 class LogIn extends StatelessWidget {
   void selectMainLogEntry(BuildContext ctx) {
-    Navigator.of(ctx).pushReplacementNamed(TabsScreen.routeName);
+    Navigator.of(ctx).pushReplacementNamed(MainLogEntry.routeName);
   }
 
   // void selectNewUser(BuildContext ctx) {
@@ -21,7 +17,7 @@ class LogIn extends StatelessWidget {
     final mediaQuery = MediaQuery.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('E-SLB Log in'),
+        title: Text('Secure Log in'),
       ),
       body: Column(
         //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -51,7 +47,7 @@ class LogIn extends StatelessWidget {
             height: 30,
           ),
           GestureDetector(
-            onTap: () => Navigator.of(context).pushNamed(User.routeName),
+            onTap: () => Navigator.of(context).pushNamed(UserForm.routeName),
             child: Container(
               child: Text('Create New User'),
             ),

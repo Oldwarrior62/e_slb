@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_complete_guide/widgets/Email_item.dart';
+import 'package:flutter_complete_guide/widgets/company_selected.dart';
+import '../widgets/date_selected.dart';
+import 'package:flutter_complete_guide/widgets/location_selected.dart';
 import 'package:flutter_complete_guide/widgets/new_user.dart';
 //import 'package:flutter_complete_guide/widgets/personal_info.dart';
-import 'package:flutter_complete_guide/screens/tabsScreen.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -71,14 +73,22 @@ class _MainDrawerState extends State<MainDrawer> {
           _buildListTile('Header update', Icons.update, () {
             Navigator.of(context).pushReplacementNamed(NewUser.routeName);
           }),
-          _buildListTile('Daily report', Icons.login, () {
-            Navigator.of(context).pushReplacementNamed(TabsScreen.routeName);
-          }),
           _buildListTile('Email', Icons.email, () {
             Navigator.of(context).pushReplacementNamed(Email.routeName);
           }),
           _buildListTile('Pesonal info', Icons.info, () {
             Navigator.of(context).pushReplacementNamed(NewUser.routeName);
+          }),
+          _buildListTile('Pesonal info', Icons.info, () {
+            Navigator.of(context).pushReplacementNamed(DateSelected.routeName);
+          }),
+          _buildListTile('Pesonal info', Icons.info, () {
+            Navigator.of(context)
+                .pushReplacementNamed(CompanySelected.routName);
+          }),
+          _buildListTile('Pesonal info', Icons.info, () {
+            Navigator.of(context)
+                .pushReplacementNamed(LocationSelected.routeName);
           }),
           Container(
             padding: const EdgeInsets.all(20),
@@ -101,13 +111,15 @@ class _MainDrawerState extends State<MainDrawer> {
                   },
                 ),
                 _buildListTileSwitch(
-                    '24 clock',
-                    'select 24 hour or standard time.',
-                    _isTwentyFourHour, (newValue) {
-                  setState(() {
-                    _isTwentyFourHour = newValue;
-                  });
-                })
+                  '24 clock',
+                  'select 24 hour or standard time.',
+                  _isTwentyFourHour,
+                  (newValue) {
+                    setState(() {
+                      _isTwentyFourHour = newValue;
+                    });
+                  },
+                ),
               ],
             ),
           ),

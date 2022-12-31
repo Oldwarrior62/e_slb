@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './log_entry_item.dart';
-import '../modles/report_information.dart';
+import '../models/report_model.dart';
 
 class LogInfoList extends StatelessWidget {
   final List<ReportInformation> logEntry;

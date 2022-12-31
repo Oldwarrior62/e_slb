@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../modles/report_information.dart';
+import '../models/report_model.dart';
 
 class LogEntryItem extends StatelessWidget {
   final bool isLandScape;
@@ -50,7 +50,7 @@ class LogEntryItem extends StatelessWidget {
                   //display for current time log entry is submitted
                   //this is automatically done in 24 hour clock
                   Text(
-                DateFormat.Hm().format(logEntry.date),
+                DateFormat.Hm().format(logEntry.createdTime),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16 * curScaleFactor,
@@ -77,7 +77,7 @@ class LogEntryItem extends StatelessWidget {
                       //display for current time log entry is submitted
                       //this is automatically done in 24 hour clock
                       Text(
-                    DateFormat.Hm().format(logEntry.date),
+                    DateFormat.Hm().format(logEntry.createdTime),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16 * curScaleFactor,
@@ -107,12 +107,12 @@ class LogEntryItem extends StatelessWidget {
                     foregroundColor: Colors.red,
                     side: BorderSide(color: Colors.red, width: 5),
                   ),
-                  onPressed: () => strikeOutLog(logEntry.id),
+                  onPressed: () => strikeOutLog(logEntry.reportInformationId),
                   icon: Icon(Icons.delete),
                   label: const Text('Delete'),
                 )
               : IconButton(
-                  onPressed: () => strikeOutLog(logEntry.id),
+                  onPressed: () => strikeOutLog(logEntry.reportInformationId),
                   icon: Icon(
                     Icons.delete,
                     color: Theme.of(context).errorColor,

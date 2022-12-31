@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../screens/tabsScreen.dart';
 import 'package:intl/intl.dart';
 
 class NewUser extends StatefulWidget {
@@ -21,9 +20,9 @@ class _NewUserState extends State<NewUser> {
   String date = DateFormat.yMMMMd().format(DateTime.now());
 
   void selectMainLogEntry(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed(
-      TabsScreen.routeName,
-    );
+    // Navigator.of(ctx).pushNamed(
+    //   TabsScreen.routeName,
+    // );
   }
 
   // Widget updateHeader(BuildContext ctx) {

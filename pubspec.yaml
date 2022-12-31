@@ -30,7 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider: ^6.0.3
   datetime_picker_formfield: ^2.0.1
-  shared_preferences: ^2.0.15
+  sqflite: ^2.2.2
+  path_provider: ^2.0.11
  # geolocator: ^8.0.5
 
 dev_dependencies:
