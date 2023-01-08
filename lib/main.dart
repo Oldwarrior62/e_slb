@@ -4,20 +4,15 @@ import '../widgets/details_page.dart';
 import './widgets/date_selected.dart';
 import './widgets/location_selected.dart';
 import './widgets/company_selected.dart';
-import './widgets/personal_info.dart';
 import './widgets/Email_item.dart';
 import './widgets/log_in.dart';
 import './widgets/main_log_entry.dart';
-import './widgets/new_user.dart';
+import 'widgets/update_page.dart';
 import 'widgets/user_form.dart';
 
 //import 'widgets/main_log_entry.dart';
 
 void main() {
-  // SystemChrome.setPreferredOrientations([
-  //   DeviceOrientation.portraitUp,
-  //   DeviceOrientation.portraitDown,
-  // ]);
   runApp(MyApp());
 }
 
@@ -28,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'E-SLB',
       theme: ThemeData(
-          // fontFamily: 'Quicksand',
+          // fontFamily: 'OpenDyslexic',
           // textTheme: ThemeData.light().textTheme.copyWith(
           //       subtitle1: TextStyle(
           //         fontFamily: 'OpenSans',
@@ -38,7 +33,6 @@ class MyApp extends StatelessWidget {
           //       button: TextStyle(color: Colors.white),
           //     ),
           // appBarTheme: AppBarTheme(
-          //   // ignore: deprecated_member_use
           //   textTheme: ThemeData.light().textTheme.copyWith(
           //         subtitle2: TextStyle(
           //           fontFamily: 'OpenSans',
@@ -53,16 +47,15 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (ctx) => LogIn(),
         '/log_in': (ctx) => LogIn(),
-        NewUser.routeName: (ctx) => NewUser(),
+        UpdatePage.routeName: (ctx) => UpdatePage(),
         MainLogEntry.routeName: (ctx) => MainLogEntry(),
         Email.routeName: (ctx) => Email(),
-        PersonalInfo.routeName: (ctx) => PersonalInfo(),
         UserForm.routeName: (ctx) => UserForm(),
         CompanySelected.routName: (ctx) => CompanySelected(),
         LocationSelected.routeName: (ctx) => LocationSelected(),
         DateSelected.routeName: (ctx) => DateSelected(),
         DetailsPage.routeName: (ctx) => DetailsPage(
-              dailyReportId: null,
+              dailyReportId: null, // null or ?
             ),
       },
     );

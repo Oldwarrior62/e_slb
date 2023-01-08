@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'details_page.dart';
 
 class CompanySelected extends StatelessWidget {
-  const CompanySelected({Key key}) : super(key: key);
+  const CompanySelected({Key? key}) : super(key: key);
   static const routName = '/company';
 
   @override

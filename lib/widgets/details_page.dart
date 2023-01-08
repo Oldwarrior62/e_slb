@@ -8,9 +8,9 @@ import '../models/user_model.dart';
 import '../widgets/main_drawer.dart';
 
 class DetailsPage extends StatefulWidget {
-  final int dailyReportId;
+  final int? dailyReportId;
 
-  const DetailsPage({Key key, @required this.dailyReportId}) : super(key: key);
+  const DetailsPage({Key? key, required this.dailyReportId}) : super(key: key);
   static const routeName = '/detailsPage';
 
   @override
@@ -18,11 +18,10 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  //late DailyReport dailyReport; doesn't like the 'late'
-  DailyReport dailyReport;
-  User user;
-  Location location;
-  Company company;
+  late DailyReport dailyReport;
+  late User user;
+  late Location location;
+  late Company company;
   bool isLoading = false;
 
   Future refreshDailyReports() async {
@@ -49,7 +48,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 padding: EdgeInsets.all(12),
                 children: [
                   Text(
-                    user.name,
+                    user.name!,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,
@@ -60,7 +59,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: 8,
                   ),
                   Text(
-                    user.surname,
+                    user.surname!,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,
@@ -71,7 +70,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: 8,
                   ),
                   Text(
-                    company.companyName,
+                    company.companyName!,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,
@@ -82,7 +81,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: 8,
                   ),
                   Text(
-                    location.location,
+                    location.location!,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,
@@ -104,7 +103,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: 8,
                   ),
                   Text(
-                    dailyReport.notes,
+                    dailyReport.notes!,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,
@@ -115,7 +114,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: 8,
                   ),
                   Text(
-                    dailyReport.weather,
+                    dailyReport.weather!,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,

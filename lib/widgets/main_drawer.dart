@@ -4,8 +4,7 @@ import 'package:flutter_complete_guide/widgets/Email_item.dart';
 import 'package:flutter_complete_guide/widgets/company_selected.dart';
 import '../widgets/date_selected.dart';
 import 'package:flutter_complete_guide/widgets/location_selected.dart';
-import 'package:flutter_complete_guide/widgets/new_user.dart';
-//import 'package:flutter_complete_guide/widgets/personal_info.dart';
+import 'package:flutter_complete_guide/widgets/update_page.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -26,7 +25,7 @@ class _MainDrawerState extends State<MainDrawer> {
       title: Text(title),
       value: currentValue,
       subtitle: Text(description),
-      onChanged: updateValue,
+      onChanged: updateValue as void Function(bool)?,
     );
   }
 
@@ -43,7 +42,7 @@ class _MainDrawerState extends State<MainDrawer> {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: tapHandler,
+      onTap: tapHandler as void Function()?,
     );
   }
 
@@ -71,13 +70,10 @@ class _MainDrawerState extends State<MainDrawer> {
             height: 20,
           ),
           _buildListTile('Header update', Icons.update, () {
-            Navigator.of(context).pushReplacementNamed(NewUser.routeName);
+            Navigator.of(context).pushReplacementNamed(UpdatePage.routeName);
           }),
           _buildListTile('Email', Icons.email, () {
             Navigator.of(context).pushReplacementNamed(Email.routeName);
-          }),
-          _buildListTile('Pesonal info', Icons.info, () {
-            Navigator.of(context).pushReplacementNamed(NewUser.routeName);
           }),
           _buildListTile('Pesonal info', Icons.info, () {
             Navigator.of(context).pushReplacementNamed(DateSelected.routeName);

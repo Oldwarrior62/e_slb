@@ -1,18 +1,22 @@
+import 'dart:async';
+
+import 'package:sqflite/sqflite.dart';
+
 import '../db/daily_report_database.dart';
 import '../models/report_model.dart';
 
 class ReportInformationOperations {
-  ReportInformationOperations reportInformationOperations;
+  ReportInformationOperations? reportInformationOperations;
 
   final dbProvider = DailyReportRepository.instance;
 
   createReportInformation(ReportInformation reportInformation) async {
-    final db = await dbProvider.database;
+    final db = await (dbProvider.database as FutureOr<Database>);
     db.insert('User', reportInformation.toMap());
   }
 
   Future<List<ReportInformation>> getAllUsers() async {
-    final db = await dbProvider.database;
+    final db = await (dbProvider.database as FutureOr<Database>);
     List<Map<String, dynamic>> allRows = await db.query('ReportInformation');
     List<ReportInformation> reportInfo = allRows
         .map((reportInformation) =>
@@ -22,7 +26,7 @@ class ReportInformationOperations {
   }
 
   Future<ReportInformation> readCompany(int companyId) async {
-    final db = await dbProvider.database;
+    final db = await (dbProvider.database as FutureOr<Database>);
 
     final maps = await db.query(
       reportInformationTable,

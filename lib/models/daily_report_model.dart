@@ -22,14 +22,14 @@ class DailyReportNotes {
 }
 
 class DailyReport {
-  int dailyReportId;
-  String notes;
-  String signature;
-  String weather;
-  DateTime dayCreated;
-  int companyId;
-  int locationId;
-  int reportInformationId;
+  int? dailyReportId;
+  String? notes;
+  String? signature;
+  String? weather;
+  DateTime? dayCreated;
+  int? companyId;
+  int? locationId;
+  int? reportInformationId;
 
   DailyReport(
     this.dailyReportId,

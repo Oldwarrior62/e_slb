@@ -10,8 +10,8 @@ class LocationNotes {
 }
 
 class Location {
-  int locationId;
-  String location;
+  int? locationId;
+  String? location;
 
   Location({
     this.locationId,

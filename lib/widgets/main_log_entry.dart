@@ -141,7 +141,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final isLandScape = mediaQuery.orientation == Orientation.landscape;
-    final PreferredSizeWidget appBar = Platform.isIOS
+    final PreferredSizeWidget appBar = (Platform.isIOS
         ? CupertinoNavigationBar(
             middle: const Text('Security Log Book'),
             trailing: Row(
@@ -162,7 +162,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
                 icon: Icon(Icons.add),
               ),
             ],
-          );
+          )) as PreferredSizeWidget;
 
     final logWidget = Container(
       height: (mediaQuery.size.height -
@@ -182,13 +182,13 @@ class _MainLogEntryState extends State<MainLogEntry> {
             if (isLandScape)
               ..._buildLandscapeContent(
                 mediaQuery,
-                appBar,
+                appBar as AppBar,
                 logWidget,
               ),
             if (!isLandScape)
               ..._buildPortrateContent(
                 mediaQuery,
-                appBar,
+                appBar as AppBar,
                 logWidget,
               ),
             const SizedBox(
@@ -202,7 +202,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
     return Platform.isIOS
         ? CupertinoPageScaffold(
             child: pageBody,
-            navigationBar: appBar,
+            navigationBar: appBar as ObstructingPreferredSizeWidget?,
           )
         : Scaffold(
             //appBar: appBar,

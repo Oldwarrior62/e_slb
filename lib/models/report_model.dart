@@ -12,9 +12,9 @@ class reportInformationNotes {
 }
 
 class ReportInformation {
-  String reportInformationId;
-  String logEntry;
-  DateTime createdTime;
+  String? reportInformationId;
+  String? logEntry;
+  DateTime? createdTime;
 
   ReportInformation({
     this.reportInformationId,

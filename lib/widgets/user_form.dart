@@ -1,10 +1,12 @@
 // this page is using user_information have to cross this over to the database
 // this page will be use one time to create a single user for a stand alone app
-
+//import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import '../models/userinfo_model.dart';
+
 import 'main_drawer.dart';
-import 'package:intl/intl.dart';
+import '../models/company_model.dart';
+import '../models/location_model.dart';
+import '../models/user_model.dart';
 
 class UserForm extends StatefulWidget {
   static const routeName = '/user';
@@ -19,20 +21,33 @@ class _UserState extends State<UserForm> {
   final _licenseExpiryDateFocusNode = FocusNode();
   final _companyNameFocusNode = FocusNode();
   final _siteLocationFocusNode = FocusNode();
+  final _logoUrlFocusNode = FocusNode();
+
   final _dateController = TextEditingController();
   final _imageUrlControler = TextEditingController();
-  final _logoUrlFocusNode = FocusNode();
+  final _nameController = TextEditingController();
+  final _surnameControler = TextEditingController();
+  final _licenseExpiryDateController = TextEditingController();
+  final _companyNameControler = TextEditingController();
+  final _siteLocationControler = TextEditingController();
+
   final _form = GlobalKey<FormState>();
 
-  //following should be in update information with selected fields
-  var _editedUser = UserInformation(
-    id: null,
-    firstName: '',
-    lastName: '',
-    expiryDate: DateTime.now(),
-    imageUrl: '',
+  var _editedUser = User(
+    name: '',
+    surname: '',
+    email: '',
+  );
+
+  var _editedLocation = Location(
+    locationId: null,
+    location: '',
+  );
+
+  var _editedCompany = Company(
+    companyId: null,
     companyName: '',
-    siteLocation: '',
+    logoUrl: '',
   );
 
   @override
@@ -48,9 +63,17 @@ class _UserState extends State<UserForm> {
     _companyNameFocusNode.dispose();
     _licenseExpiryDateFocusNode.dispose();
     _siteLocationFocusNode.dispose();
+    _logoUrlFocusNode.dispose();
+
     _dateController.dispose();
     _imageUrlControler.dispose();
-    _logoUrlFocusNode.dispose();
+    _companyNameControler.dispose();
+    _dateController.dispose();
+    _imageUrlControler.dispose();
+    _nameController.dispose();
+    _surnameControler.dispose();
+    _licenseExpiryDateController.dispose();
+
     super.dispose();
   }
 
@@ -68,13 +91,13 @@ class _UserState extends State<UserForm> {
   }
 
   void _savedForm() {
-    final isValid = _form.currentState.validate();
+    final isValid = _form.currentState!.validate();
     if (!isValid) {
       return;
     }
-    _form.currentState.save();
-    print(_editedUser.firstName);
-    print(_editedUser.lastName);
+    _form.currentState!.save();
+    print(_editedUser.name);
+    print(_editedUser.surname);
   }
 
   @override
@@ -98,30 +121,27 @@ class _UserState extends State<UserForm> {
             child: Column(
               children: [
                 TextFormField(
+                  controller: _nameController,
                   decoration: InputDecoration(labelText: 'First Name'),
                   textInputAction: TextInputAction.next,
                   onFieldSubmitted: (_) {
                     FocusScope.of(context).requestFocus(_nameFocusNode);
                   },
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Please enter a first name';
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _editedUser = UserInformation(
-                      firstName: value,
-                      lastName: _editedUser.lastName,
-                      expiryDate: _editedUser.expiryDate,
-                      companyName: _editedUser.companyName,
-                      siteLocation: _editedUser.siteLocation,
-                      id: _editedUser.id,
-                      imageUrl: _editedUser.imageUrl,
+                    _editedUser = User(
+                      name: value,
+                      surname: _editedUser.surname,
                     );
                   },
                 ),
                 TextFormField(
+                  controller: _surnameControler,
                   decoration: InputDecoration(labelText: 'Surname'),
                   textInputAction: TextInputAction.next,
                   focusNode: _nameFocusNode,
@@ -129,69 +149,40 @@ class _UserState extends State<UserForm> {
                     FocusScope.of(context).requestFocus(_surnameFocusNode);
                   },
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Please enter a last name';
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _editedUser = UserInformation(
-                      firstName: _editedUser.firstName,
-                      lastName: value,
-                      expiryDate: _editedUser.expiryDate,
-                      companyName: _editedUser.companyName,
-                      siteLocation: _editedUser.siteLocation,
-                      id: _editedUser.id,
-                      imageUrl: _editedUser.imageUrl,
+                    _editedUser = User(
+                      name: _editedUser.name,
+                      surname: value,
                     );
                   },
                 ),
                 TextFormField(
-                  controller: _dateController,
-                  decoration: InputDecoration(
-                    labelText: 'Expiry Date',
-                  ),
+                  controller: _licenseExpiryDateController,
+                  decoration: InputDecoration(labelText: 'License expiry date'),
                   textInputAction: TextInputAction.next,
-                  focusNode: _licenseExpiryDateFocusNode,
+                  focusNode: _nameFocusNode,
                   onFieldSubmitted: (_) {
-                    FocusScope.of(context).requestFocus(_companyNameFocusNode);
-                  },
-                  onTap: () async {
-                    FocusScope.of(context)
-                        .requestFocus(_licenseExpiryDateFocusNode);
-                    await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate: DateTime(2015),
-                      lastDate: DateTime(2025),
-                    ).then(
-                      (selectedDate) {
-                        if (selectedDate != null) {
-                          _dateController.text =
-                              DateFormat('yyyy-MM-dd').format(selectedDate);
-                        }
-                      },
-                    );
+                    FocusScope.of(context).requestFocus(_surnameFocusNode);
                   },
                   validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter a expirey date';
+                    if (value!.isEmpty) {
+                      return 'Please enter the date your security license expirers on.';
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _editedUser = UserInformation(
-                      firstName: _editedUser.firstName,
-                      lastName: _editedUser.lastName,
-                      expiryDate: DateTime.parse(value),
-                      companyName: _editedUser.companyName,
-                      siteLocation: _editedUser.siteLocation,
-                      id: _editedUser.id,
-                      imageUrl: _editedUser.imageUrl,
+                    _editedCompany = Company(
+                      logoUrl: value,
                     );
                   },
                 ),
                 TextFormField(
+                  controller: _companyNameControler,
                   decoration: InputDecoration(labelText: 'Company Name'),
                   textInputAction: TextInputAction.next,
                   focusNode: _companyNameFocusNode,
@@ -199,42 +190,32 @@ class _UserState extends State<UserForm> {
                     FocusScope.of(context).requestFocus(_siteLocationFocusNode);
                   },
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Please enter a company name';
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _editedUser = UserInformation(
-                      firstName: _editedUser.firstName,
-                      lastName: _editedUser.lastName,
-                      expiryDate: _editedUser.expiryDate,
+                    _editedCompany = Company(
                       companyName: value,
-                      siteLocation: _editedUser.siteLocation,
-                      id: _editedUser.id,
-                      imageUrl: _editedUser.imageUrl,
                     );
                   },
                 ),
                 TextFormField(
+                  controller: _siteLocationControler,
                   decoration: InputDecoration(labelText: 'Site Location'),
                   textInputAction: TextInputAction.next,
-                  focusNode: _siteLocationFocusNode,
+                  focusNode: _logoUrlFocusNode,
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return 'Please enter a site location';
                     }
                     return null;
                   },
                   onSaved: (value) {
-                    _editedUser = UserInformation(
-                      firstName: _editedUser.firstName,
-                      lastName: _editedUser.lastName,
-                      expiryDate: _editedUser.expiryDate,
-                      companyName: _editedUser.companyName,
-                      siteLocation: value,
-                      id: _editedUser.id,
-                      imageUrl: _editedUser.imageUrl,
+                    _editedLocation = Location(
+                      location: value,
+                      locationId: _editedLocation.locationId,
                     );
                   },
                 ),
@@ -271,7 +252,7 @@ class _UserState extends State<UserForm> {
                         controller: _imageUrlControler,
                         focusNode: _logoUrlFocusNode,
                         validator: (value) {
-                          if (value.isEmpty) {
+                          if (value!.isEmpty) {
                             return 'Please enter a company logo URL';
                           }
                           if (!value.startsWith('http') &&
@@ -286,14 +267,9 @@ class _UserState extends State<UserForm> {
                           return null;
                         },
                         onSaved: (value) {
-                          _editedUser = UserInformation(
-                            firstName: _editedUser.firstName,
-                            lastName: _editedUser.lastName,
-                            expiryDate: _editedUser.expiryDate,
-                            companyName: _editedUser.companyName,
-                            siteLocation: _editedUser.siteLocation,
-                            id: _editedUser.id,
-                            imageUrl: value,
+                          _editedCompany = Company(
+                            companyName: _editedCompany.companyName,
+                            logoUrl: value,
                           );
                         },
                         onFieldSubmitted: (_) {

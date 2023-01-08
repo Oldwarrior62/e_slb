@@ -4,9 +4,9 @@ import '../models/daily_report_model.dart';
 
 class DailyReportCardWidget extends StatelessWidget {
   DailyReportCardWidget({
-    Key key,
-    @required this.dailyReport,
-    @required this.index,
+    Key? key,
+    required this.dailyReport,
+    required this.index,
   }) : super(key: key);
 
   final DailyReport dailyReport;

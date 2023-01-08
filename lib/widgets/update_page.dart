@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
 
-class NewUser extends StatefulWidget {
+class UpdatePage extends StatefulWidget {
   static const routeName = '/new_user';
 
   @override
-  State<NewUser> createState() => _NewUserState();
+  State<UpdatePage> createState() => _NewUserState();
 }
 
-class _NewUserState extends State<NewUser> {
+class _NewUserState extends State<UpdatePage> {
   final locationController = TextEditingController();
   final weatherController = TextEditingController();
   final firstNameController = TextEditingController();
@@ -144,7 +143,6 @@ class _NewUserState extends State<NewUser> {
   }
 
   @override
-  // ignore: unused_element
   Widget build(BuildContext context) {
     // final data = HeaderInformation(
     //   id: DateFormat('dd/MM/yyyy —   HH:mm:ss:S').format(DateTime.now()),

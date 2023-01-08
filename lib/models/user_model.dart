@@ -12,15 +12,15 @@ class UserNotes {
 }
 
 class User {
-  String name;
-  String surname;
-  String email;
+  String? name;
+  String? surname;
+  String? email;
 
-  User(
+  User({
     this.name,
     this.surname,
     this.email,
-  );
+  });
 
   User.fromMap(dynamic obj) {
     this.name = obj['name'];

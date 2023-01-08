@@ -1,5 +1,6 @@
+import 'dart:async';
 import 'dart:io';
-import 'package:flutter_complete_guide/models/daily_report_model.dart';
+import '../models/daily_report_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
@@ -12,9 +13,9 @@ class DailyReportRepository {
   final _dailyReportName = 'daily_report';
   final _databaseVersion = 1;
 
-  static Database _database;
+  static Database? _database;
 
-  Future<Database> get database async {
+  Future<Database?> get database async {
     if (_database != null) {
       return _database;
     } else {
@@ -83,7 +84,7 @@ CREATE TABLE isBool(
   final dbProvider = DailyReportRepository.instance;
 
   Future<List<DailyReport>> getAllDailyReports() async {
-    final db = await dbProvider.database;
+    final db = await (dbProvider.database as FutureOr<Database>);
     final orderBy = '${DailyReportNotes.dayCreated}';
     List<Map<String, dynamic>> allRows =
         await db.query('dailyReport', orderBy: orderBy);
@@ -92,8 +93,8 @@ CREATE TABLE isBool(
     return dailyReport;
   }
 
-  Future<DailyReport> readDailyReport(int dailyReportId) async {
-    final db = await dbProvider.database;
+  Future<DailyReport> readDailyReport(int? dailyReportId) async {
+    final db = await (dbProvider.database as FutureOr<Database>);
 
     final maps = await db.query(
       dailyReportTable,
@@ -109,7 +110,7 @@ CREATE TABLE isBool(
   }
 
   Future close() async {
-    final db = await instance.database;
+    final db = await (instance.database as FutureOr<Database>);
     db.close();
   }
 }

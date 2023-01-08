@@ -1,8 +1,8 @@
 class IsBool {
-  bool isDyslexic;
-  bool isTwentyFour;
-  bool isDarkMode;
-  bool isLoggedIn;
+  bool? isDyslexic;
+  bool? isTwentyFour;
+  bool? isDarkMode;
+  bool? isLoggedIn;
 
   IsBool({
     this.isDarkMode,
@@ -19,10 +19,10 @@ class IsBool {
   }
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
-      'isDyslexic': isDyslexic ? 1 : 0,
-      'isTwentyFour': isTwentyFour ? 1 : 0,
-      'isDarkMode': isDarkMode ? 1 : 0,
-      'isLoggedIn': isLoggedIn ? 1 : 0,
+      'isDyslexic': isDyslexic! ? 1 : 0,
+      'isTwentyFour': isTwentyFour! ? 1 : 0,
+      'isDarkMode': isDarkMode! ? 1 : 0,
+      'isLoggedIn': isLoggedIn! ? 1 : 0,
     };
     return map;
   }

@@ -11,12 +11,12 @@ class LogEntryItem extends StatelessWidget {
   final Function strikeOutLog;
 
   const LogEntryItem({
-    Key key,
-    @required this.isLandScape,
-    @required this.mediaQuery,
-    @required this.logEntry,
-    @required this.curScaleFactor,
-    @required this.strikeOutLog,
+    Key? key,
+    required this.isLandScape,
+    required this.mediaQuery,
+    required this.logEntry,
+    required this.curScaleFactor,
+    required this.strikeOutLog,
   }) : super(key: key);
 
   @override
@@ -50,7 +50,7 @@ class LogEntryItem extends StatelessWidget {
                   //display for current time log entry is submitted
                   //this is automatically done in 24 hour clock
                   Text(
-                DateFormat.Hm().format(logEntry.createdTime),
+                DateFormat.Hm().format(logEntry.createdTime!),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16 * curScaleFactor,
@@ -77,7 +77,7 @@ class LogEntryItem extends StatelessWidget {
                       //display for current time log entry is submitted
                       //this is automatically done in 24 hour clock
                       Text(
-                    DateFormat.Hm().format(logEntry.createdTime),
+                    DateFormat.Hm().format(logEntry.createdTime!),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16 * curScaleFactor,
@@ -95,7 +95,7 @@ class LogEntryItem extends StatelessWidget {
             // height: mediaQuery.size.height * 0.08,
 
             child: Text(
-              logEntry.logEntry,
+              logEntry.logEntry!,
               style: TextStyle(fontSize: 12 * curScaleFactor),
               maxLines: 10,
             ),

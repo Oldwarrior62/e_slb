@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'details_page.dart';
 
 class LocationSelected extends StatelessWidget {
-  const LocationSelected({Key key}) : super(key: key);
+  const LocationSelected({Key? key}) : super(key: key);
   static const routeName = '/location';
 
   @override

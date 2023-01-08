@@ -6,7 +6,7 @@ import '../models/daily_report_model.dart';
 import '../widgets/details_page.dart';
 
 class DateSelected extends StatefulWidget {
-  const DateSelected({Key key}) : super(key: key);
+  const DateSelected({Key? key}) : super(key: key);
   static const routeName = '/date';
 
   @override
@@ -14,8 +14,7 @@ class DateSelected extends StatefulWidget {
 }
 
 class _DateSelectedState extends State<DateSelected> {
-  // late List<DailyReport> dailyReport; doesn't like the "late"
-  List<DailyReport> dailyReports;
+  late List<DailyReport> dailyReports;
   bool isloading = false;
 
   @override
@@ -59,7 +58,7 @@ class _DateSelectedState extends State<DateSelected> {
         onPressed: () async {
           await Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => null,
+              builder: ((context) => null) as Widget Function(BuildContext),
             ),
           );
           refreshDailyReport();
