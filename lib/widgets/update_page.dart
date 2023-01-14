@@ -1,8 +1,9 @@
+//So user can update what is for now header information
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class UpdatePage extends StatefulWidget {
-  static const routeName = '/new_user';
+  static const routeName = '/update_user';
 
   @override
   State<UpdatePage> createState() => _NewUserState();
@@ -11,31 +12,19 @@ class UpdatePage extends StatefulWidget {
 class _NewUserState extends State<UpdatePage> {
   final locationController = TextEditingController();
   final weatherController = TextEditingController();
-  final firstNameController = TextEditingController();
+  final companyNameController = TextEditingController();
+  final logoUrlController = TextEditingController();
 
   bool _validate = false;
   var location;
   var weather;
+  var companyName;
+  var logoUrl;
   String date = DateFormat.yMMMMd().format(DateTime.now());
 
-  void selectMainLogEntry(BuildContext ctx) {
-    // Navigator.of(ctx).pushNamed(
-    //   TabsScreen.routeName,
-    // );
-  }
+  // void selectUpdate(BuildContext ctx) {
 
-  // Widget updateHeader(BuildContext ctx) {
-  //   MaterialPageRoute(
-  //     builder: (ctx) => HeaderInformation(location, weather),
-  //   );
   // }
-
-  // void submitData() {
-  //   final enteredLog = firstNameController.text;
-
-  //   if (enteredLog.isEmpty) {
-  //     return;
-  //   }
 
   void _NewWeather(BuildContext ctx) {
     final curScaleFactor = MediaQuery.of(context).textScaleFactor;
@@ -76,6 +65,112 @@ class _NewUserState extends State<UpdatePage> {
                             ? _validate = true
                             : _validate = false;
                         weather = weatherController.text;
+                      },
+                    );
+                    // clearText();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _NewLogoUrl(BuildContext ctx) {
+    final curScaleFactor = MediaQuery.of(context).textScaleFactor;
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(5),
+              child: TextField(
+                style: TextStyle(
+                  fontSize: 10 * curScaleFactor,
+                  fontWeight: FontWeight.bold,
+                ),
+                decoration: InputDecoration(
+                  labelText: 'Enter logo url',
+                  errorText: _validate ? 'Logo url Can\'t Be Empty' : null,
+                ),
+                controller: logoUrlController,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  child: Text(
+                    'Add logo url',
+                    style: TextStyle(
+                      fontSize: 10 * curScaleFactor,
+                    ),
+                  ),
+                  // textColor: Colors.purple,
+                  onPressed: () {
+                    setState(
+                      () {
+                        logoUrlController.text.isEmpty
+                            ? _validate = true
+                            : _validate = false;
+                        logoUrl = logoUrlController.text;
+                      },
+                    );
+                    // clearText();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _NewCompany(BuildContext ctx) {
+    final curScaleFactor = MediaQuery.of(context).textScaleFactor;
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(5),
+              child: TextField(
+                style: TextStyle(
+                  fontSize: 10 * curScaleFactor,
+                  fontWeight: FontWeight.bold,
+                ),
+                decoration: InputDecoration(
+                  labelText: 'Enter company name',
+                  errorText: _validate ? 'Company namer Can\'t Be Empty' : null,
+                ),
+                controller: companyNameController,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  child: Text(
+                    'Add company name',
+                    style: TextStyle(
+                      fontSize: 10 * curScaleFactor,
+                    ),
+                  ),
+                  // textColor: Colors.purple,
+                  onPressed: () {
+                    setState(
+                      () {
+                        companyNameController.text.isEmpty
+                            ? _validate = true
+                            : _validate = false;
+                        companyName = companyNameController.text;
                       },
                     );
                     // clearText();
@@ -144,12 +239,6 @@ class _NewUserState extends State<UpdatePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final data = HeaderInformation(
-    //   id: DateFormat('dd/MM/yyyy —   HH:mm:ss:S').format(DateTime.now()),
-    //   // date: DateFormat('dd/MM/yyyy —   HH:mm:ss:S').format(DateTime.now()),
-    //   location: location,
-    // );
-
     final curScaleFactor = MediaQuery.of(context).textScaleFactor;
     return Scaffold(
       appBar: AppBar(
@@ -157,6 +246,9 @@ class _NewUserState extends State<UpdatePage> {
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 50,
+          ),
           Container(
             padding: const EdgeInsets.all(8),
             child: Row(
@@ -165,94 +257,146 @@ class _NewUserState extends State<UpdatePage> {
                 Column(
                   children: [
                     Text(
-                      'Location: ${location}',
+                      'CompanyName: ${companyName}',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14 * curScaleFactor,
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => _newLocation(context),
+                      onTap: () => _NewCompany(context),
                       child: Container(
                         padding: const EdgeInsets.all(10),
                         child: Center(
-                          child: Text('update location'),
+                          child: Text('update company name'),
                         ),
                       ),
                     ),
                   ],
                 ),
-                //display for current year month day is submitted
-                Text(
-                  date,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12 * curScaleFactor,
+                SizedBox(
+                  height: 50,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            'location: ${location}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14 * curScaleFactor,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => _newLocation(context),
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              child: Center(
+                                child: Text('update location'),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  'logoUrl: ${logoUrl}',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14 * curScaleFactor,
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () => _NewLogoUrl(context),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Center(
+                                      child: Text('update logo url'),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            // display for current year month day is submitted
+                            Text(
+                              date,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12 * curScaleFactor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(8),
+                                child:
+                                    //display weather bottom left of header_info
+                                    //currently hard coded in
+                                    Text(
+                                  'Weather: ${weather}',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () => _NewWeather(context),
+                                child: Container(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Center(
+                                    child: Text('update weather'),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      // SizedBox(
+                      //   height: 50,
+                      // ),
+                      // TextButton(
+                      //   child: const Text('Submit'),
+                      //   onPressed: () {
+                      //      selectUpdate(context);
+                      //   },
+                      // ),
+                      // SizedBox(
+                      //   height: 50,
+                      // ),
+                      // TextButton(
+                      //     child: Text('update'),
+                      //     onPressed: () {
+                      //       selectUpdate(context);
+                      //     }),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-          Row(
-            children: [
-              Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    child:
-                        //display weather bottom left of header_info
-                        //currently hard coded in
-                        Text(
-                      'Weather: ${weather}',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => _NewWeather(context),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Center(
-                        child: Text('update weather'),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          // SizedBox(
-          //   height: 50,
-          // ),
-          // TextButton(
-          //   child: const Text('Submit'),
-          //   onPressed: () {
-          //     selectMainLogEntry(context);
-          //   },
-          // ),
-          // SizedBox(
-          //   height: 50,
-          // ),
-          // RaisedButton(
-          //   child: Text('update'),
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) => HeaderInfo(
-          //           data: data,
-          //         ),
-          //       ),
-          //     );
-          //   },
-          // ),
-          SizedBox(
-            height: 50,
-          ),
-          TextButton(
-              child: Text('update'),
-              onPressed: () {
-                selectMainLogEntry(context);
-              }),
         ],
       ),
     );

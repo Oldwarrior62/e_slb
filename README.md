@@ -30,7 +30,7 @@ TODOS:
 -connect user form to upload information to the database. //new_user and user_form are the same.
 -connect log entry and time created to database.
 -create and connect update page.
--add a signature widger.
+-add a signature widget.
 -be able to email a txt or pdf in a email.
 -search by dateCreated, Company, Location, keyWord.
 -add the free dyslixec font options.
@@ -38,7 +38,9 @@ TODOS:
 -add dark mode?
 -add is logged in (user created).
 -figgure out what to do with update header?
-
+-add a expandable notes area between header and manin body of log entry
+-page numbered
+-make it international
 
 
 ERRORS:

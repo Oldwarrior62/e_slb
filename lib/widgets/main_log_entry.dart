@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -23,6 +22,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
 
   String date = DateFormat.yMMMMd().format(DateTime.now());
 
+// adds time and log entry to daily report
   void _newLogEntry(String newLogEntry) {
     final newLogIn = ReportInformation(
       reportInformationId: DateTime.now().toString(),
@@ -34,6 +34,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
     });
   }
 
+// bottom modal type in your log entry
   void _startNewLogEntry(BuildContext ctx) {
     showModalBottomSheet(
       context: ctx,
@@ -43,6 +44,8 @@ class _MainLogEntryState extends State<MainLogEntry> {
     );
   }
 
+// set as delete but I want to change this so it will
+// put strike through the letters instead
   void stikeOutLogEntry(String id) {
     setState(() {
       _report.removeWhere(
@@ -51,6 +54,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
     });
   }
 
+//landscape view
   List<Widget> _buildLandscapeContent(
     MediaQueryData mediaQuery,
     AppBar appBar,
@@ -62,6 +66,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+// creates more room removing the header in landsacpe view
           const Text('Show header'),
           Switch.adaptive(
             activeColor: Theme.of(context).shadowColor,
@@ -76,6 +81,8 @@ class _MainLogEntryState extends State<MainLogEntry> {
       ),
       _showHeader
           ? Column(children: [
+// this is hard coded for now I want to beable
+//to upload url or image found on the device
               Image.asset(
                 'lib/images/logo.png',
                 width: mediaQuery.size.width * .2,
@@ -101,6 +108,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
     ];
   }
 
+// portrate view
   List<Widget> _buildPortrateContent(
     MediaQueryData mediaQuery,
     AppBar appBar,
@@ -111,6 +119,8 @@ class _MainLogEntryState extends State<MainLogEntry> {
     return [
       Column(
         children: [
+// this is hard coded for now I want to beable
+//to upload url or image found on the device
           Image.asset(
             'lib/images/logo.png',
             width: mediaQuery.size.width * .2,
@@ -164,6 +174,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
             ],
           )) as PreferredSizeWidget;
 
+    // is the log entrys list with the delete icon to be turned into strike out
     final logWidget = Container(
       height: (mediaQuery.size.height -
               appBar.preferredSize.height -
@@ -172,6 +183,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
       child: LogInfoList(_report, stikeOutLogEntry),
     );
 
+    // body creates a single scrool view
     final pageBody = SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -185,6 +197,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
                 appBar as AppBar,
                 logWidget,
               ),
+// ! is not landscape
             if (!isLandScape)
               ..._buildPortrateContent(
                 mediaQuery,
@@ -199,6 +212,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
       ),
     );
 
+// is IPS
     return Platform.isIOS
         ? CupertinoPageScaffold(
             child: pageBody,

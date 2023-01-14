@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../widgets/update_page.dart';
 //import 'package:flutter/services.dart';
 //import 'package:geolocator/geolocator.dart';
 
@@ -67,6 +68,10 @@ class _HeaderInfoState extends State<HeaderInfo> {
             ),
           ],
         ),
+        IconButton(
+            onPressed: () =>
+                Navigator.of(context).pushNamed(UpdatePage.routeName),
+            icon: Icon(Icons.update))
       ],
     );
   }
