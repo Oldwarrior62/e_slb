@@ -4,8 +4,6 @@
 import 'package:flutter/material.dart';
 
 import 'main_drawer.dart';
-import '../models/company_model.dart';
-import '../models/location_model.dart';
 import '../models/user_model.dart';
 
 class UserForm extends StatefulWidget {
@@ -37,17 +35,6 @@ class _UserState extends State<UserForm> {
     name: '',
     surname: '',
     email: '',
-  );
-
-  var _editedLocation = Location(
-    locationId: null,
-    location: '',
-  );
-
-  var _editedCompany = Company(
-    companyId: null,
-    companyName: '',
-    logoUrl: '',
   );
 
   @override
@@ -176,9 +163,9 @@ class _UserState extends State<UserForm> {
                     return null;
                   },
                   onSaved: (value) {
-                    _editedCompany = Company(
-                      logoUrl: value,
-                    );
+                    // _editedCompany = Company(
+                    //   logoUrl: value,
+                    // );
                   },
                 ),
                 TextFormField(
@@ -196,9 +183,9 @@ class _UserState extends State<UserForm> {
                     return null;
                   },
                   onSaved: (value) {
-                    _editedCompany = Company(
-                      companyName: value,
-                    );
+                    // _editedCompany = Company(
+                    //   companyName: value,
+                    // );
                   },
                 ),
                 TextFormField(
@@ -213,10 +200,10 @@ class _UserState extends State<UserForm> {
                     return null;
                   },
                   onSaved: (value) {
-                    _editedLocation = Location(
-                      location: value,
-                      locationId: _editedLocation.locationId,
-                    );
+                    // _editedLocation = Location(
+                    //   location: value,
+                    //   locationId: _editedLocation.locationId,
+                    //);
                   },
                 ),
                 Row(
@@ -267,10 +254,10 @@ class _UserState extends State<UserForm> {
                           return null;
                         },
                         onSaved: (value) {
-                          _editedCompany = Company(
-                            companyName: _editedCompany.companyName,
-                            logoUrl: value,
-                          );
+                          // _editedCompany = Company(
+                          //   companyName: _editedCompany.companyName,
+                          //   logoUrl: value,
+                          // );
                         },
                         onFieldSubmitted: (_) {
                           _savedForm();

@@ -41,37 +41,18 @@ CREATE TABLE dailyReport(
   notes TEXT NOT NULL,
   weather TEXT NOT NULL,
   signature TEXT NOT NULL,
-  FK_dailyReport_comany INTEGER NOT NULL,
-  FK_dailyReport_location INTEGER NOT NULL,
-  FK_dailyReport_logInfo INTEGER NOT NULL,
-  FOREIGN KEY (FK_dailyReport_comany) REFERENCES company (companyId),
-  FOREIGN KEY (FK_dailyReport_location) REFERENCES location (locationId),
-  FOREIGN KEY (FK_dailyReport_logInfo) REFERENCES logInfo (reportInformationId),
+  location  TEXT NOT NULL, 
+  companyName TEXT NOT NULL,
+  logo TEXT NOT NULL,      
 )
 ''');
     await db.execute('''
 CREATE TABLE user(
   name TEXT NOT NULL,
-  surname TEXT NOT NULL,
+  surname TEXT NOT NULL,  
   email TEXT NOT NULL,
 )
 ''');
-    await db.execute('''
-CREATE TABLE company(
-  companyId INTEGER PRIMARY KEY AUTOINCREMENT,
-  companyName TEXT NOT NULL,
-  logo TEXT NOT NULL,
-  email TEXT NOT NULL,
-)
-''');
-    await db.execute('''
-CREATE TABLE logInfo(
-  reportInformationId INTEGER PRIMARY KEY AUTOINCREMENT,
-  logEntry TEXT NOT NULL,
-  createdTime TEXT NOT NULL,
-  )
-''');
-
     await db.execute('''
 CREATE TABLE isBool(
  isDyslexic BOOLEAN NOT NULL,
