@@ -1,22 +1,22 @@
 import 'dart:async';
 
-import 'package:sqflite/sqflite.dart';
+import 'package:flutter_complete_guide/DatabaseHandler/DbHelper.dart';
+//import 'package:sqflite/sqflite.dart';
 
 import '../models/company_model.dart';
-import '../db/daily_report_database.dart';
 
 class CompanyOperations {
   CompanyOperations? companyOperations;
 
-  final dbProvider = DailyReportRepository.instance;
+  final dbProvider = DbHelper.instance;
 
   createCompany(Company company) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
     db.insert('Company', company.toMap());
   }
 
   Future<List<Company>> getAllCompanys() async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
     List<Map<String, dynamic>> allRows = await db.query('Company');
     List<Company> company =
         allRows.map((user) => Company.fromMap(Company)).toList();
@@ -24,7 +24,7 @@ class CompanyOperations {
   }
 
   Future<Company> readCompany(int companyId) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
 
     final maps = await db.query(
       companyTable,

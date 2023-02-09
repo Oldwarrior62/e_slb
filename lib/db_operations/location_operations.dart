@@ -1,19 +1,19 @@
 import 'dart:async';
 
-import 'package:sqflite/sqflite.dart';
+import 'package:flutter_complete_guide/DatabaseHandler/DbHelper.dart';
+//import 'package:sqflite/sqflite.dart';
 
-import '../db/daily_report_database.dart';
 import '../models/location_model.dart';
 
-final dbProvider = DailyReportRepository.instance;
+final dbProvider = DbHelper.instance;
 
 createLocation(Location location) async {
-  final db = await (dbProvider.database as FutureOr<Database>);
+  final db = await (dbProvider.database);
   db.insert('Location', location.toMap());
 }
 
 Future<List<Location>> getAllLocations() async {
-  final db = await (dbProvider.database as FutureOr<Database>);
+  final db = await (dbProvider.database);
   List<Map<String, dynamic>> allRows = await db.query('Location');
   List<Location> location =
       allRows.map((location) => Location.fromMap(Location)).toList();
@@ -21,7 +21,7 @@ Future<List<Location>> getAllLocations() async {
 }
 
 Future<Location> readLocation(int locationId) async {
-  final db = await (dbProvider.database as FutureOr<Database>);
+  final db = await (dbProvider.database);
 
   final maps = await db.query(
     locationTable,

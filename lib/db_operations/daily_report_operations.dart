@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:sqflite/sqflite.dart';
+import 'package:flutter_complete_guide/DatabaseHandler/DbHelper.dart';
+//import 'package:sqflite/sqflite.dart';
 
-import '../db/daily_report_database.dart';
 import '../models/company_model.dart';
 import '../models/location_model.dart';
 import '../models/daily_report_model.dart';
@@ -10,28 +10,28 @@ import '../models/daily_report_model.dart';
 class DailyReportOperations {
   DailyReportOperations? dailyReportOperations;
 
-  final dbProvider = DailyReportRepository.instance;
+  final dbProvider = DbHelper.instance;
 
   createDailyReport(DailyReport dailyReport) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
     db.insert('dailyReport', dailyReport.toMap());
     print('Daily Report Inserted');
   }
 
   updateDailyReport(DailyReport dailyReport) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
     db.update('dailyReport', dailyReport.toMap(),
         where: 'dailyReportId=?', whereArgs: [dailyReport.dailyReportId]);
   }
 
   deleteDailyReport(DailyReport dailyReport) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
     await db.delete('dailyReport',
         where: 'dailyReportId=?', whereArgs: [dailyReport.dailyReportId]);
   }
 
   Future<List<DailyReport>> getAllDailyReports() async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
     final orderBy = '${DailyReportNotes.dayCreated}';
     List<Map<String, dynamic>> allRows =
         await db.query('dailyReport', orderBy: orderBy);
@@ -41,7 +41,7 @@ class DailyReportOperations {
   }
 
   Future<List<DailyReport>> getAllContactsByCompany(Company company) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
     List<Map<String, dynamic>> allRows = await db.rawQuery('''
 SELECT * FROM company WHERE dailyReport.FK_dailyReport_comany = Company.companyId
 ''');
@@ -52,7 +52,7 @@ SELECT * FROM company WHERE dailyReport.FK_dailyReport_comany = Company.companyI
   }
 
   Future<List<DailyReport>> getAllContactsByLocation(Location location) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
     List<Map<String, dynamic>> allRows = await db.rawQuery('''
 SELECT * FROM company WHERE dailyReport.FK_dailyReport_location = Location.locationId
 ''');
@@ -62,7 +62,7 @@ SELECT * FROM company WHERE dailyReport.FK_dailyReport_location = Location.locat
   }
 
   Future<List<DailyReport>> searchDailyReport(Stringkeyword) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
     List<Map<String, dynamic>> allRows = await db.query('dailyReport',
         where: 'dayCreated LIKE ?', whereArgs: ['%keyword%']);
     List<DailyReport> dailyReport =
@@ -71,7 +71,7 @@ SELECT * FROM company WHERE dailyReport.FK_dailyReport_location = Location.locat
   }
 
   Future<DailyReport> readCompany(int companyId) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+    final db = await (dbProvider.database);
 
     final maps = await db.query(
       dailyReportTable,

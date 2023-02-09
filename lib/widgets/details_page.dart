@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../DatabaseHandler/DbHelper.dart';
 import '../models/company_model.dart';
 import '../models/location_model.dart';
-import '../db/daily_report_database.dart';
 import '../models/daily_report_model.dart';
 import '../models/user_model.dart';
 import '../widgets/main_drawer.dart';
@@ -26,8 +26,8 @@ class _DetailsPageState extends State<DetailsPage> {
 
   Future refreshDailyReports() async {
     setState(() => isLoading = true);
-    this.dailyReport = await DailyReportRepository.instance
-        .readDailyReport(widget.dailyReportId);
+    this.dailyReport =
+        await DbHelper.instance.readDailyReport(widget.dailyReportId);
     setState(() => isLoading = false);
   }
 

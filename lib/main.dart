@@ -5,10 +5,10 @@ import './widgets/date_selected.dart';
 import './widgets/location_selected.dart';
 import './widgets/company_selected.dart';
 import './widgets/Email_item.dart';
-import './widgets/log_in.dart';
 import './widgets/main_log_entry.dart';
 import 'widgets/update_page.dart';
 import 'widgets/user_form.dart';
+import 'widgets/LoginForm.dart';
 
 //import 'widgets/main_log_entry.dart';
 
@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
               .copyWith(secondary: Colors.amber)),
       // home: LogIn(),
       routes: {
-        '/': (ctx) => LogIn(),
-        '/log_in': (ctx) => LogIn(),
+        '/': (ctx) => LoginForm(),
+        '/log_in': (ctx) => LoginForm(),
         UpdatePage.routeName: (ctx) => UpdatePage(),
         MainLogEntry.routeName: (ctx) => MainLogEntry(),
         Email.routeName: (ctx) => Email(),

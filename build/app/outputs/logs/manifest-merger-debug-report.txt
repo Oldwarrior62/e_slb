@@ -6,8 +6,12 @@ INJECTED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\main\AndroidManifest.xm
 INJECTED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from [:shared_preferences_android] C:\Users\oldwa\E-SLB\e_slb\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:sqflite] C:\Users\oldwa\E-SLB\e_slb\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:path_provider_android] C:\Users\oldwa\E-SLB\e_slb\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_secure_storage] C:\Users\oldwa\E-SLB\e_slb\build\flutter_secure_storage\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-10:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\761d5aed95183ada80b8d01ca626656b\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4ae8db8808990911ffb0cc1d905648d2\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.security:security-crypto:1.1.0-alpha04] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4de8ddbbf14076af7f1a4526b15a2c49\jetified-security-crypto-1.1.0-alpha04\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\bbf4cbc54853a53f7a06e0dba1ebd51c\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\6c01b63444c0963df5777e4b9fa2007a\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\66653c290c7ddd74f66188ec55c025c2\loader-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -19,8 +23,8 @@ MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\oldwa\.gradle\caches
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\50641c9a8a061e55216f91a57d79acd5\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\adabbac9e25653e422069b23c260ca70\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\387f80bbc6b6e7090b883074edb3dc54\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4b668e187cbc4e1b445e01e40d99376f\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\5203dbc66a4153a2a2fc8f8978f39d07\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4b668e187cbc4e1b445e01e40d99376f\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\aa63dc3ffff53d2c8f4d1c912c731bee\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\25f31f33195a59df670e46c016a79f40\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
 INJECTED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\debug\AndroidManifest.xml:1:1-7:12
@@ -102,10 +106,18 @@ INJECTED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\main\AndroidManifest.xm
 INJECTED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\main\AndroidManifest.xml
 MERGED from [:shared_preferences_android] C:\Users\oldwa\E-SLB\e_slb\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] C:\Users\oldwa\E-SLB\e_slb\build\shared_preferences_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] C:\Users\oldwa\E-SLB\e_slb\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] C:\Users\oldwa\E-SLB\e_slb\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] C:\Users\oldwa\E-SLB\e_slb\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider_android] C:\Users\oldwa\E-SLB\e_slb\build\path_provider_android\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_secure_storage] C:\Users\oldwa\E-SLB\e_slb\build\flutter_secure_storage\intermediates\library_manifest\debug\AndroidManifest.xml:6:5-8:53
+MERGED from [:flutter_secure_storage] C:\Users\oldwa\E-SLB\e_slb\build\flutter_secure_storage\intermediates\library_manifest\debug\AndroidManifest.xml:6:5-8:53
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\761d5aed95183ada80b8d01ca626656b\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\761d5aed95183ada80b8d01ca626656b\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4ae8db8808990911ffb0cc1d905648d2\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4ae8db8808990911ffb0cc1d905648d2\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.security:security-crypto:1.1.0-alpha04] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4de8ddbbf14076af7f1a4526b15a2c49\jetified-security-crypto-1.1.0-alpha04\AndroidManifest.xml:20:5-44
+MERGED from [androidx.security:security-crypto:1.1.0-alpha04] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4de8ddbbf14076af7f1a4526b15a2c49\jetified-security-crypto-1.1.0-alpha04\AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\bbf4cbc54853a53f7a06e0dba1ebd51c\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\bbf4cbc54853a53f7a06e0dba1ebd51c\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\6c01b63444c0963df5777e4b9fa2007a\viewpager-1.0.0\AndroidManifest.xml:20:5-44
@@ -128,16 +140,18 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\oldwa\.g
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\adabbac9e25653e422069b23c260ca70\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\387f80bbc6b6e7090b883074edb3dc54\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\387f80bbc6b6e7090b883074edb3dc54\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4b668e187cbc4e1b445e01e40d99376f\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4b668e187cbc4e1b445e01e40d99376f\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\5203dbc66a4153a2a2fc8f8978f39d07\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\5203dbc66a4153a2a2fc8f8978f39d07\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4b668e187cbc4e1b445e01e40d99376f\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\4b668e187cbc4e1b445e01e40d99376f\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\aa63dc3ffff53d2c8f4d1c912c731bee\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\aa63dc3ffff53d2c8f4d1c912c731bee\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\25f31f33195a59df670e46c016a79f40\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\oldwa\.gradle\caches\transforms-2\files-2.1\25f31f33195a59df670e46c016a79f40\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
 INJECTED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\debug\AndroidManifest.xml
 INJECTED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\debug\AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [:flutter_secure_storage] C:\Users\oldwa\E-SLB\e_slb\build\flutter_secure_storage\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-50
 	android:targetSdkVersion
 		INJECTED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\oldwa\E-SLB\e_slb\android\app\src\debug\AndroidManifest.xml

@@ -90,7 +90,7 @@ class _MainDrawerState extends State<MainDrawer> {
             padding: const EdgeInsets.all(20),
             child: Text(
               'Preferances',
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
           Expanded(

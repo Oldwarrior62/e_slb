@@ -1,6 +1,5 @@
 // this page is using user_information have to cross this over to the database
 // this page will be use one time to create a single user for a stand alone app
-//import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 
 import 'main_drawer.dart';

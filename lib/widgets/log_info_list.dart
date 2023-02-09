@@ -26,7 +26,7 @@ class LogInfoList extends StatelessWidget {
                 ),
                 Text(
                   'No log entered.',
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
             )

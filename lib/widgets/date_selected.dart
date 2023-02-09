@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/DatabaseHandler/DbHelper.dart';
 import '../widgets/daily_report_card_widget.dart';
-//import 'package:flutter_complete_guide/db_operations/daily_report_operations.dart';
-import '../db/daily_report_database.dart';
 import '../models/daily_report_model.dart';
 import '../widgets/details_page.dart';
 
@@ -25,7 +24,7 @@ class _DateSelectedState extends State<DateSelected> {
 
   @override
   void dispose() {
-    DailyReportRepository.instance.close();
+    DbHelper.instance.close();
     super.dispose();
   }
 
@@ -33,7 +32,7 @@ class _DateSelectedState extends State<DateSelected> {
     setState(() => isloading = true);
     this.dailyReports =
         // had to move getAllDailyReports to repository from operations
-        await DailyReportRepository.instance.getAllDailyReports();
+        await DbHelper.instance.getAllDailyReports();
     setState(() => isloading = false);
   }
 

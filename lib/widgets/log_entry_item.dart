@@ -115,7 +115,7 @@ class LogEntryItem extends StatelessWidget {
                   onPressed: () => strikeOutLog(logEntry.reportInformationId),
                   icon: Icon(
                     Icons.delete,
-                    color: Theme.of(context).errorColor,
+                    color: Theme.of(context).colorScheme.error,
                   ),
                 ),
         ],

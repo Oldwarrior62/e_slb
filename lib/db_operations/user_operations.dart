@@ -1,29 +1,37 @@
 import 'dart:async';
 
+import '../models/UserModel.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../db/daily_report_database.dart';
-import '../models/user_model.dart';
+import '../DatabaseHandler/DbHelper.dart';
+
+late Database _db;
 
 class UserOperations {
   UserOperations? userOperations;
 
-  final dbProvider = DailyReportRepository.instance;
+  final dbProvider = DbHelper.instance;
 
-  createDailyReport(User user) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+  createUser(UserModel user) async {
+    final db = await (dbProvider.database);
     db.insert('User', user.toMap());
   }
 
-  Future<List<User>> getAllUsers() async {
-    final db = await (dbProvider.database as FutureOr<Database>);
-    List<Map<String, dynamic>> allRows = await db.query('User');
-    List<User> user = allRows.map((user) => User.fromMap(User)).toList();
-    return user;
+  // Future<List<UserModel>> getAllUsers() async {
+  //   final db = await (dbProvider.database as FutureOr<Database>);
+  //   List<Map<String, dynamic>> UserModel = await db.query('User');
+  //   List<UserModel> user = UserModel.fromMap((user) => UserModel.fromMap(UserModel)).toList();
+  //   return user;
+  // }
+
+  saveData(UserModel user) async {
+    var dbClient = await _db;
+    var res = await dbClient.insert(user as String, user.toMap());
+    return res;
   }
 
-  Future<User> readUser(int userId) async {
-    final db = await (dbProvider.database as FutureOr<Database>);
+  Future<UserModel> readUser(int userId) async {
+    final db = await (dbProvider.database);
 
     final maps = await db.query(
       userTable,
@@ -32,7 +40,7 @@ class UserOperations {
       whereArgs: ['UserId'],
     );
     if (maps.isNotEmpty) {
-      return User.fromMap(maps.first);
+      return UserModel.fromMap(maps.first);
     } else {
       throw Exception('User not found');
     }
