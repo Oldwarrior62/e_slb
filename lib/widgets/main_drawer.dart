@@ -4,7 +4,8 @@ import 'package:flutter_complete_guide/widgets/Email_item.dart';
 import 'package:flutter_complete_guide/widgets/company_selected.dart';
 import '../widgets/date_selected.dart';
 import 'package:flutter_complete_guide/widgets/location_selected.dart';
-import 'package:flutter_complete_guide/widgets/update_page.dart';
+import 'package:flutter_complete_guide/widgets/update_header_page.dart';
+import '../widgets/HomeForm.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -75,16 +76,22 @@ class _MainDrawerState extends State<MainDrawer> {
           _buildListTile('Email', Icons.email, () {
             Navigator.of(context).pushReplacementNamed(Email.routeName);
           }),
-          _buildListTile('Pesonal info', Icons.info, () {
+          _buildListTile('Date selected info', Icons.info, () {
             Navigator.of(context).pushReplacementNamed(DateSelected.routeName);
           }),
-          _buildListTile('Pesonal info', Icons.info, () {
+          _buildListTile('Company info', Icons.info, () {
             Navigator.of(context)
                 .pushReplacementNamed(CompanySelected.routName);
           }),
-          _buildListTile('Pesonal info', Icons.info, () {
+          _buildListTile('Location info', Icons.info, () {
             Navigator.of(context)
                 .pushReplacementNamed(LocationSelected.routeName);
+          }),
+          _buildListTile('Location info', Icons.info, () {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (_) => HomeForm()),
+                (Route<dynamic> route) => false);
           }),
           Container(
             padding: const EdgeInsets.all(20),

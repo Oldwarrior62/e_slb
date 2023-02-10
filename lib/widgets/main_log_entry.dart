@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import 'log_info_list.dart';
+//import 'main_drawer.dart';
 import 'new_log_entry.dart';
 import 'header_info.dart';
 import '../models/report_model.dart';
@@ -62,6 +63,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
   ) {
     // String weather;
     // String location;
+
     return [
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -219,7 +221,7 @@ class _MainLogEntryState extends State<MainLogEntry> {
             navigationBar: appBar as ObstructingPreferredSizeWidget?,
           )
         : Scaffold(
-            //appBar: appBar,
+            appBar: appBar,
             body: pageBody,
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,

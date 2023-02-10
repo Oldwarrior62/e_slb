@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/main_log_entry.dart';
 import '../comm/commHelper.dart';
 import '../comm/genLoginSignupHeader.dart';
 import '../comm/genTextFormField.dart';
@@ -7,7 +8,7 @@ import '../models/UserModel.dart';
 import '../widgets/SignupForm.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'HomeForm.dart';
+//import 'HomeForm.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _LoginFormState extends State<LoginForm> {
   Future<SharedPreferences> _pref = SharedPreferences.getInstance();
   final _formKey = new GlobalKey<FormState>();
 
-  final _conUserId = TextEditingController();
+  final _conName = TextEditingController();
   final _conPassword = TextEditingController();
   var dbHelper;
 
@@ -30,7 +31,7 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   login() async {
-    String name = _conUserId.text;
+    String name = _conName.text;
     String passwd = _conPassword.text;
 
     if (name.isEmpty) {
@@ -45,7 +46,7 @@ class _LoginFormState extends State<LoginForm> {
           setSP(userData).whenComplete(() {
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (_) => HomeForm()),
+                MaterialPageRoute(builder: (_) => MainLogEntry()),
                 (Route<dynamic> route) => false);
           });
         } else {
@@ -84,7 +85,7 @@ class _LoginFormState extends State<LoginForm> {
                 children: [
                   genLoginSignupHeader('Login'),
                   getTextFormField(
-                      controller: _conUserId,
+                      controller: _conName,
                       icon: Icons.person,
                       hintName: 'Name'),
                   SizedBox(height: 10.0),

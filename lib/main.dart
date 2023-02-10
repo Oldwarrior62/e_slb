@@ -6,7 +6,7 @@ import './widgets/location_selected.dart';
 import './widgets/company_selected.dart';
 import './widgets/Email_item.dart';
 import './widgets/main_log_entry.dart';
-import 'widgets/update_page.dart';
+import 'widgets/update_header_page.dart';
 import 'widgets/user_form.dart';
 import 'widgets/LoginForm.dart';
 
