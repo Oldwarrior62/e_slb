@@ -95,9 +95,9 @@ CREATE TABLE isBool(
   Future<UserModel?> getLoginUser(name, String password) async {
     assert(name != null);
     var dbClient = await _database;
-    var res = await dbClient?.rawQuery("SELECT * FROM 'user' WHERE "
-        "$name = '$name' AND "
-        "$password = '$password'");
+    var res = await dbClient?.rawQuery("SELECT * FROM user WHERE "
+        "name = '$name' AND "
+        "password = '$password'");
 
     if (res!.length > 0) {
       return UserModel.fromMap(res.first);
