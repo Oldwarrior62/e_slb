@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import '../widgets/main_log_entry.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_complete_guide/Bloc/Notes/notesCubit.dart';
+import 'package:flutter_complete_guide/Bloc/User/userCubit.dart';
+import 'package:flutter_complete_guide/comm/loading.dart';
+import 'package:flutter_complete_guide/widgets/main_log_entry.dart';
 import '../comm/commHelper.dart';
 import '../comm/genLoginSignupHeader.dart';
 import '../comm/genTextFormField.dart';
 import '../DatabaseHandler/DbHelper.dart';
-import '../models/UserModel.dart';
 import '../widgets/SignupForm.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-//import 'HomeForm.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _LoginFormState extends State<LoginForm> {
   Future<SharedPreferences> _pref = SharedPreferences.getInstance();
   final _formKey = new GlobalKey<FormState>();
 
-  final _conName = TextEditingController();
+  final _conUserId = TextEditingController();
   final _conPassword = TextEditingController();
   var dbHelper;
 
@@ -31,7 +32,7 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   login() async {
-    String name = _conName.text;
+    String name = _conUserId.text;
     String passwd = _conPassword.text;
 
     if (name.isEmpty) {
@@ -39,33 +40,43 @@ class _LoginFormState extends State<LoginForm> {
     } else if (passwd.isEmpty) {
       alertDialog(context, "Please Enter Password");
     } else {
+      loading(context);
       DbHelper db = DbHelper.instance;
-      await db.database;
-      await db.getLoginUser(name, passwd).then((userData) {
+      context.read<NotesCubit>().state.lstNotes = await db.getNotes();
+      db.getLoginUser(name, passwd).then((userData) async {
         if (userData != null) {
-          setSP(userData).whenComplete(() {
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (_) => MainLogEntry()),
-                (Route<dynamic> route) => false);
+          db.checkNotes().then((value) {
+            if (value != null) {
+              value.ontap = true;
+              BlocProvider.of<NotesCubit>(context).setNote(value);
+            }
           });
+
+          SharedPreferences sp = await SharedPreferences.getInstance();
+          String? id = sp.getString('userid');
+          if (id == null) {
+            sp.setString("userid", userData.userId.toString());
+            sp.setString('securityLisence', '');
+            sp.setString('ofa', '');
+          } else {
+            userData.securityLicense = sp.getString('securityLisence');
+            userData.ofa = sp.getString("ofa");
+          }
+          BlocProvider.of<UserCubit>(context).setUser(userData);
+          Navigator.pop(context);
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (_) => MainLogEntry()),
+              (Route<dynamic> route) => false);
         } else {
+          Navigator.pop(context);
           alertDialog(context, "Error: User Not Found");
         }
       }).catchError((error) {
-        print(error);
+        Navigator.pop(context);
         alertDialog(context, "Error: Login Fail");
       });
     }
-  }
-
-  Future setSP(UserModel user) async {
-    final SharedPreferences sp = await _pref;
-
-    sp.setString("user_name", UserNotes.name);
-    sp.setString("user_surname", UserNotes.surname);
-    sp.setString("email", UserNotes.email);
-    sp.setString("password", UserNotes.password);
   }
 
   @override
@@ -85,7 +96,7 @@ class _LoginFormState extends State<LoginForm> {
                 children: [
                   genLoginSignupHeader('Login'),
                   getTextFormField(
-                      controller: _conName,
+                      controller: _conUserId,
                       icon: Icons.person,
                       hintName: 'Name'),
                   SizedBox(height: 10.0),

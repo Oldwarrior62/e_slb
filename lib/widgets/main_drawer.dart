@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_complete_guide/Bloc/User/userCubit.dart';
 
-import 'package:flutter_complete_guide/widgets/Email_item.dart';
-import 'package:flutter_complete_guide/widgets/company_selected.dart';
-import '../widgets/date_selected.dart';
-import 'package:flutter_complete_guide/widgets/location_selected.dart';
-import 'package:flutter_complete_guide/widgets/update_header_page.dart';
-import '../widgets/HomeForm.dart';
+import 'package:flutter_complete_guide/widgets/add_company.dart';
+import 'package:flutter_complete_guide/widgets/main_log_entry.dart';
+import 'package:flutter_complete_guide/widgets/updateProfile.dart';
+import 'package:flutter_complete_guide/widgets/view_notes.dart';
 
 class MainDrawer extends StatefulWidget {
   @override
@@ -50,7 +50,7 @@ class _MainDrawerState extends State<MainDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
+      child: ListView(
         children: [
           Container(
             height: 120,
@@ -70,28 +70,18 @@ class _MainDrawerState extends State<MainDrawer> {
           SizedBox(
             height: 20,
           ),
-          _buildListTile('Header update', Icons.update, () {
-            Navigator.of(context).pushReplacementNamed(UpdatePage.routeName);
+          _buildListTile('Home', Icons.house, () {
+            Navigator.of(context).pushReplacementNamed(MainLogEntry.routeName);
           }),
-          _buildListTile('Email', Icons.email, () {
-            Navigator.of(context).pushReplacementNamed(Email.routeName);
+          _buildListTile('Update Profile', Icons.update, () {
+            Navigator.of(context).pushReplacementNamed(UpdateProfile.routeName);
           }),
-          _buildListTile('Date selected info', Icons.info, () {
-            Navigator.of(context).pushReplacementNamed(DateSelected.routeName);
-          }),
-          _buildListTile('Company info', Icons.info, () {
+          _buildListTile('Add Company', Icons.house, () {
             Navigator.of(context)
-                .pushReplacementNamed(CompanySelected.routName);
+                .pushReplacementNamed(AddCompanyScreen.routeName);
           }),
-          _buildListTile('Location info', Icons.info, () {
-            Navigator.of(context)
-                .pushReplacementNamed(LocationSelected.routeName);
-          }),
-          _buildListTile('Location info', Icons.info, () {
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (_) => HomeForm()),
-                (Route<dynamic> route) => false);
+          _buildListTile('View Notes', Icons.view_agenda, () {
+            Navigator.of(context).pushReplacementNamed(ViewNotes.routeName);
           }),
           Container(
             padding: const EdgeInsets.all(20),
@@ -102,7 +92,18 @@ class _MainDrawerState extends State<MainDrawer> {
           ),
           Expanded(
             child: ListView(
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(),
               children: [
+                Builder(builder: (context) {
+                  return SwitchListTile(
+                    title: Text('Show Lisence'),
+                    onChanged: (bool value) {
+                      context.read<UserCubit>().setIsLisence(value);
+                    },
+                    value: context.watch<UserCubit>().state.islisence,
+                  );
+                }),
                 _buildListTileSwitch(
                   'Dyslexic',
                   'May help reading',

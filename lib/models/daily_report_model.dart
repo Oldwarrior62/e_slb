@@ -28,51 +28,52 @@ class DailyReportNotes {
 class DailyReport {
   int? dailyReportId;
   String? log;
-  DateTime? timeCreated;
+  String? timeCreated;
   String? notes;
   String? signature;
   String? weather;
-  DateTime? dayCreated;
-  int? company;
-  int? location;
+  String? dateCreated;
+  String? company;
+  String? location;
   int? reportInformation;
+  String? logo;
 
   DailyReport(
-    this.dailyReportId,
-    this.log,
-    this.timeCreated,
-    this.notes,
-    this.signature,
-    this.weather,
-    this.dayCreated,
-    this.company,
-    this.location,
-    this.reportInformation,
-  );
+      this.dailyReportId,
+      this.log,
+      this.timeCreated,
+      this.notes,
+      this.signature,
+      this.weather,
+      this.dateCreated,
+      this.company,
+      this.location,
+      this.reportInformation,
+      this.logo);
 
   DailyReport.fromMap(dynamic obj) {
     this.dailyReportId = obj['dailyReportId'];
     this.log = obj['log'];
     this.timeCreated = obj['timeCreated'];
-    this.dayCreated = obj['dayCreated'];
+    this.dateCreated = obj['dateCreated'];
     this.notes = obj['notes'];
     this.signature = obj['signature'];
     this.weather = obj['weather'];
-    this.company = obj['comany'];
+    this.company = obj['companyName'];
     this.location = obj['location'];
-    this.reportInformation = obj['reportInfo'];
+    this.logo = obj['logo'];
   }
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
-      'dayCreated': dayCreated,
+      'dateCreated': dateCreated,
       'notes': notes,
       'log': log,
       'timeCreated': timeCreated,
       'signature': signature,
       'weather': weather,
-      'comany': company,
+      'companyName': company,
       'location': location,
-      'reportInfo': reportInformation,
+      'logo': logo
     };
     return map;
   }

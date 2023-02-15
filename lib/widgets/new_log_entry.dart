@@ -1,9 +1,24 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/DatabaseHandler/DbHelper.dart';
+import 'package:flutter_complete_guide/comm/commHelper.dart';
+import 'package:flutter_complete_guide/models/daily_report_model.dart';
+
+import '../models/company_model.dart';
 
 class NewLogEntry extends StatefulWidget {
   final Function addNewLogIn;
 
-  NewLogEntry(this.addNewLogIn);
+  NewLogEntry(this.addNewLogIn,
+      {required this.selectedvalue,
+      required this.lstcompany,
+      required this.location,
+      required this.weather});
+  Company? selectedvalue;
+  List<Company> lstcompany = [];
+  String location;
+  String weather;
 
   @override
   State<NewLogEntry> createState() => _NewLogEntryState();
@@ -17,10 +32,32 @@ class _NewLogEntryState extends State<NewLogEntry> {
 
     if (enteredLog.isEmpty) {
       return;
-    } else
-      widget.addNewLogIn(entryController.text);
-    Navigator.of(context).pop();
-    entryController.clear();
+    } else if (widget.selectedvalue == null) {
+      alertDialog(context, "Company Must be Selected..");
+      Navigator.of(context).pop();
+    } else {
+      String Date = DateTime.now().toString().split(' ')[0];
+      String Time = DateTime.now().toString().split(' ')[1].split('.')[0];
+      DbHelper db = DbHelper.instance;
+      DailyReport dailyReport = DailyReport(
+          0,
+          entryController.text,
+          Time,
+          entryController.text,
+          "",
+          widget.weather,
+          Date,
+          widget.selectedvalue!.companyName,
+          widget.location,
+          0,
+          widget.selectedvalue!.logoUrl);
+      db.insertDailyReport(dailyReport).then((value) {
+        widget.addNewLogIn(dailyReport);
+        alertDialog(context, "Report Added");
+      });
+      Navigator.of(context).pop();
+      entryController.clear();
+    }
   }
 
   @override

@@ -26,14 +26,17 @@ class UserModel {
   String? surname;
   String? email;
   String? password;
+  String? securityLicense;
+  String? ofa;
 
-  UserModel({
-    this.userId,
-    this.name,
-    this.surname,
-    this.email,
-    this.password,
-  });
+  UserModel(
+      {this.userId,
+      this.name,
+      this.surname,
+      this.email,
+      this.password,
+      this.securityLicense,
+      this.ofa});
 
   // Future<int> saveData(UserModel user) async {
   //   var dbClient = await _db;

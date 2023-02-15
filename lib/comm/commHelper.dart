@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:toast/toast.dart';
 
 alertDialog(BuildContext context, String msg) {
-  Toast.show(msg, duration: Toast.lengthLong, gravity: Toast.bottom);
+  //Toast.show(msg, duration: Toast.lengthLong, gravity: Toast.bottom);
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
 }
 
 validateEmail(String email) {

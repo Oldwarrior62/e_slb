@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/Comm/commHelper.dart';
 
 import '../DatabaseHandler/DbHelper.dart';
 import '../comm/genTextFormField.dart';
@@ -46,11 +47,12 @@ class _SignupFormState extends State<SignupForm> {
             name: name, surname: surname, email: email, password: passwd);
         db.saveData(uModel).then(
           (value) {
-            print("Successfully Saved");
-            //  alertDialog(context, "Successfully Saved");
-
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => LoginForm()));
+            if (value == -1) {
+              alertDialog(context, "User already Exists");
+            } else {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (_) => LoginForm()));
+            }
           },
         );
 

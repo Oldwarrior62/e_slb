@@ -35,7 +35,6 @@ class Company {
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       'companyEmail': companyEmail,
-      'companyId': companyId,
       'comapnyName': companyName,
       'logoUrl': logoUrl,
     };

@@ -17,7 +17,7 @@ class DailyReportCardWidget extends StatelessWidget {
     return Card(
       child: Container(
         child: Text(
-          dailyReport.dayCreated.toString(),
+          dailyReport.dateCreated.toString(),
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,

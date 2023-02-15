@@ -92,7 +92,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: 8,
                   ),
                   Text(
-                    dailyReport.dayCreated.toString(),
+                    dailyReport.dateCreated.toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 22,

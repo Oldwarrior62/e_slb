@@ -35,6 +35,8 @@ dependencies:
   flutter_secure_storage: ^7.0.1
   toast: ^0.3.0
   shared_preferences: ^2.0.17
+  flutter_bloc: ^8.1.2
+  equatable: ^2.0.5
  # geolocator: ^8.0.5
 
 dev_dependencies:
